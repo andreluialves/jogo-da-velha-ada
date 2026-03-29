@@ -75,7 +75,7 @@ public class JogoDaVelha {
     }
 
     public static boolean jogadaValida(char[][] tabuleiro, int linha, int coluna) {
-        if (linha < 0 || linha >= TAMANHO || coluna < 0 || coluna >= TAMANHO) {
+        if (linha < 0 || linha >= 3 || coluna < 0 || coluna >= 3) {
             return false;
         }
 
@@ -88,13 +88,13 @@ public class JogoDaVelha {
 
     public static boolean verificarVencedor(char[][] t, char jogador) {
 
-        for (int i = 0; i < TAMANHO; i++) {
+        for (int i = 0; i < 3; i++) {
             if (t[i][0] == jogador && t[i][1] == jogador && t[i][2] == jogador) {
                 return true;
             }
         }
 
-        for (int i = 0; i < TAMANHO; i++) {
+        for (int i = 0; i < 3; i++) {
             if (t[0][i] == jogador && t[1][i] == jogador && t[2][i] == jogador) {
                 return true;
             }
