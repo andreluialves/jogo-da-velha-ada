@@ -63,12 +63,15 @@ public class JogoDaVelha {
     }
 
     public static void mostrarTabuleiro(char[][] tabuleiro) {
+        System.out.println("\nTabuleiro:");
+
         for (int i = 0; i < 3; i++) {
             System.out.println(tabuleiro[i][0] + " | " + tabuleiro[i][1] + " | " + tabuleiro[i][2]);
             if (i < 2) {
                 System.out.println("--+---+--");
             }
         }
+        System.out.println();
     }
 
     public static boolean jogadaValida(char[][] tabuleiro, int linha, int coluna) {
