@@ -44,5 +44,30 @@ public class JogoDaVelha {
     public static char alternarJogador(char jogador) {
         return (jogador == 'X') ? 'O' : 'X';
     }
+
+    public static boolean verificarVencedor(char[][] t, char jogador) {
+
+        for (int i = 0; i < TAMANHO; i++) {
+            if (t[i][0] == jogador && t[i][1] == jogador && t[i][2] == jogador) {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < TAMANHO; i++) {
+            if (t[0][i] == jogador && t[1][i] == jogador && t[2][i] == jogador) {
+                return true;
+            }
+        }
+
+        if (t[0][0] == jogador && t[1][1] == jogador && t[2][2] == jogador) {
+            return true;
+        }
+
+        if (t[0][2] == jogador && t[1][1] == jogador && t[2][0] == jogador) {
+            return true;
+        }
+
+        return false;
+    }
 }
 
