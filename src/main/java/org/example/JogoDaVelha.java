@@ -33,6 +33,14 @@ public class JogoDaVelha {
         }
     }
 
+    public static boolean jogadaValida(char[][] tabuleiro, int linha, int coluna) {
+        if (linha < 0 || linha >= TAMANHO || coluna < 0 || coluna >= TAMANHO) {
+            return false;
+        }
+
+        return tabuleiro[linha][coluna] == ' ';
+    }
+
     public static char alternarJogador(char jogador) {
         return (jogador == 'X') ? 'O' : 'X';
     }
