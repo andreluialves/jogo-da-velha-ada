@@ -6,14 +6,52 @@ public class JogoDaVelha {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         char[][] tabuleiro = new char[3][3];
+
         inicializarTabuleiro(tabuleiro);
+
         char jogadorAtual = 'X';
+        boolean jogoAtivo = true;
+        int jogadas = 0;
 
-        System.out.print("Linha (0-2): ");
-        int linha = sc.nextInt();
+        while (jogoAtivo) {
+            mostrarTabuleiro(tabuleiro);
 
-        System.out.print("Coluna (0-2): ");
-        int coluna = sc.nextInt();
+            int linha;
+            int coluna;
+
+            while (true) {
+                System.out.println("Jogador " + jogadorAtual + ", faça sua jogada:");
+
+                System.out.print("Linha (0-2): ");
+                linha = sc.nextInt();
+
+                System.out.print("Coluna (0-2): ");
+                coluna = sc.nextInt();
+
+                if (jogadaValida(tabuleiro, linha, coluna)) {
+                    break;
+                } else {
+                    System.out.println("❌ Jogada inválida! Tente novamente.");
+                }
+            }
+
+            tabuleiro[linha][coluna] = jogadorAtual;
+            jogadas++;
+
+            if (verificarVencedor(tabuleiro, jogadorAtual)) {
+                mostrarTabuleiro(tabuleiro);
+                System.out.println("🏆 Jogador " + jogadorAtual + " venceu!");
+                jogoAtivo = false;
+            } else if (jogadas == 9) {
+                mostrarTabuleiro(tabuleiro);
+                System.out.println("🤝 Empate!");
+                jogoAtivo = false;
+            } else {
+                jogadorAtual = alternarJogador(jogadorAtual);
+            }
+        }
+
+        sc.close();
     }
 
     public static void inicializarTabuleiro(char[][] tabuleiro) {
