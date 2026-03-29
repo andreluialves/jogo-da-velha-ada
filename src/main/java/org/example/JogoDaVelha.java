@@ -4,6 +4,7 @@ public class JogoDaVelha {
     public static void main(String[] args) {
         char[][] tabuleiro = new char[3][3];
         inicializarTabuleiro(tabuleiro);
+        char jogadorAtual = 'X';
     }
 
     public static void inicializarTabuleiro(char[][] tabuleiro) {
@@ -21,6 +22,10 @@ public class JogoDaVelha {
                 System.out.println("--+---+--");
             }
         }
+    }
+
+    public static char alternarJogador(char jogador) {
+        return (jogador == 'X') ? 'O' : 'X';
     }
 }
 
